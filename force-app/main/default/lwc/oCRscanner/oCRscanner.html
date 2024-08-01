@@ -1,0 +1,118 @@
+<template>
+	<div class="slds-m-around_large">
+
+		<div if:true={isLoaded}>
+			<lightning-card title="Scan Business Card And Create Contact">
+				<div style="padding-left: 13px;text-align: center;">
+					<lightning-input type="file" name="fileUpload" label="Upload File" accept=".png, .jpg, .jpeg"
+						onchange={handleFileChange}></lightning-input>
+				</div>
+				<!-- <template if:true={base64Data}>
+			<div class="slds-m-top_medium">
+				<span><b>Base64 Data:</b></span>
+				<textarea class="slds-textarea" readonly>{base64Data}</textarea>
+			</div>
+		</template> -->
+				<template if:true={textExtracted}>
+					<div style="padding: 10px;">
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="text" label="Name" onchange={handleInputChange} value={contactInfo.Name}></lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Name" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+						<!-- <lightning-layout>
+					<lightning-layout-item size="8">
+						<lightning-input type="text" label="Last Name"></lightning-input>
+					</lightning-layout-item>
+                    <lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+                        <select class="slds-select">
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+					</lightning-layout-item>
+				</lightning-layout> -->
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="text" label="Title" onchange={handleInputChange} value={contactInfo.Title}></lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Title" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="text" label="Company" onchange={handleInputChange} value={contactInfo.Company}>
+								</lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Company" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="email" label="Email" onchange={handleInputChange} value={contactInfo.Email}></lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Email" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="phone" label="Phone" onchange={handleInputChange} value={contactInfo.Phone}></lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Phone" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+						<lightning-layout>
+							<lightning-layout-item size="8">
+								<lightning-input type="text" label="Website" onchange={handleInputChange} value={contactInfo.Website}>
+								</lightning-input>
+							</lightning-layout-item>
+							<lightning-layout-item size="4" style="padding-top: 24px;padding-left: 3px;">
+								<select class="slds-select" name = "Website" onchange={handleOptionChange}>
+                            <template for:each = {totalLines} for:item="listViewItem">
+                                <option key={listViewItem} value={listViewItem}>{listViewItem}</option>
+                            </template>
+                        </select>
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+					<div style="text-align: center;">
+						<lightning-button label="Create Contact" title="Create Contact" onclick={handleSave}>
+						</lightning-button>
+					</div>
+				</template>
+			</lightning-card>
+		</div>
+
+		<div if:false={isLoaded} class="slds-is-relative">
+			<lightning-spinner alternative-text="Loading...">
+			</lightning-spinner>
+		</div>
+	</div>
+</template>

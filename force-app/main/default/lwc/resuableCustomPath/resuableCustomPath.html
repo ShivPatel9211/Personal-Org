@@ -1,0 +1,44 @@
+<template>
+	<lightning-card class="responsive-card slds-p-around_medium">
+		<div class="responsive-container">
+			<div class="scroll-container">
+				<lightning-progress-indicator class="progress-indicator" current-step={selectedStep} type="path"
+					variant="base">
+					<template for:each={stepList} for:item="step">
+						<lightning-progress-step key={step} label={step} value={step} onstepfocus={handleClick}>
+						</lightning-progress-step>
+					</template>
+					<template if:true={showCurrentStep}>
+						<lightning-button variant="brand" label="Mark As Current Step" title="Mark As Current Step"
+							onclick={handleUpdate} class="button-margin"></lightning-button>
+					</template>
+					<template if:true={showCompleteStep}>
+						<lightning-button variant="brand" label="Mark Step as Complete" title="Mark Step as Complete"
+							onclick={handleUpdateComplete} class="button-margin"></lightning-button>
+					</template>
+				</lightning-progress-indicator>
+			</div>
+		</div>
+	</lightning-card>
+
+
+
+	<template if:true={isFlowModalOpen}>
+		<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+					<h2 class="slds-text-heading_medium">Complete Step</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium">
+					<lightning-flow flow-api-name={flowApiName} onstatuschange={handleFlowStatusChange}>
+					</lightning-flow>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+</template>

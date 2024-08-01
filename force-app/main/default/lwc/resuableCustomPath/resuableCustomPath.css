@@ -1,0 +1,43 @@
+/* Base Styles */
+.responsive-card {
+    max-width: 100%;
+}
+
+.scroll-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.progress-indicator {
+    display: inline-flex; /* Display children in a row */
+    flex-direction: row; /* Ensure elements are in a row */
+    align-items: center; /* Center items vertically */
+}
+
+.button-margin {
+    margin-left: 0.5rem; /* Space out the buttons */
+}
+
+/* Responsive Styles for smaller screens */
+@media (max-width: 600px) {
+    .progress-indicator {
+        font-size: 14px; /* Adjust font size for better readability on smaller screens */
+    }
+
+    /* lightning-button {
+        font-size: 12px; 
+        padding: 0.5rem; 
+        width: auto; 
+        text-align: center; 
+    } */
+
+    /* .button-margin {
+        margin-left: 0; 
+        margin-top: 0.5rem; 
+    } */
+}

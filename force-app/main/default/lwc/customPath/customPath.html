@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-path">
+        <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+            <template for:each={steps} for:item="step">
+                <li key={step.value} class="slds-path__item" role="presentation">
+                    <a href="javascript:void(0);" class="slds-path__link" role="option"
+                        aria-selected={step.selected} onclick={handleStepClick} data-value={step.value}>
+                        <span class="slds-path__stage">
+                            <lightning-icon icon-name="utility:check" if:true={step.completed}></lightning-icon>
+                        </span>
+                        <span class="slds-path__title">{step.label}</span>
+                    </a>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>

@@ -1,0 +1,39 @@
+<!-- createMultipleAccounts.html -->
+<template>
+	<lightning-card title="Create Multiple accountRecords">
+		<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Industry</th>
+                    <th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<template for:each={accountRecords} for:item="account" for:index="index">
+					<tr key={account}>
+						<td>
+							<lightning-input type="text" value={account.Name} onchange={handleInputChange}
+								data-index={index} data-field="Name"></lightning-input>
+						</td>
+						<td>
+							<lightning-input type="text" value={account.Industry} onchange={handleInputChange}
+								data-index={index} data-field="Industry"></lightning-input>
+						</td>
+						<td>
+							<div class="slds-m-around_medium">
+								<lightning-button label="Add Row" onclick={addRow}></lightning-button>
+							</div>
+						</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+		<!-- <div class="slds-m-around_medium">
+			<lightning-button label="Create accountRecords" onclick={createAccounts}></lightning-button>
+		</div>
+		<div if:true={error}>
+			{error}
+		</div> -->
+	</lightning-card>
+</template>

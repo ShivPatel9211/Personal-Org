@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Compress Image in LWC">
+        <div class="slds-m-around_medium">
+            <input type="file" accept="image/*" onchange={handleFileChange} />
+        </div>
+        <template if:true={originalImage}>
+            <div class="slds-box slds-m-around_small">
+                <p>Original</p>
+                <p>Size: {originalSize} MB</p>
+                <img src={originalImageUrl} alt="Original Image" class="image"/>
+            </div>
+        </template>
+        <template if:true={compressedImage}>
+            <div class="slds-box slds-m-around_small">
+                <p>Compressed</p>
+                <p>Size: {compressedSize} MB</p>
+                <img src={compressedImageUrl} alt="Compressed Image" class="image"/>
+            </div>
+        </template>
+    </lightning-card>
+</template>
