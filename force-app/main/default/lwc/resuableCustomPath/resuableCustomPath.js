@@ -84,4 +84,14 @@ export default class ResuableCustomPath extends LightningElement {
     closeModal() {
         this.isFlowModalOpen = false;
     }
+
+    renderedCallback() {
+        setTimeout(() => {
+            const button = this.template.querySelector('.button-margin1');
+            if(button) {
+                console.log(button);
+                console.log('this is what we are trying to fetch ', button.shadowRoot.querySelector('button'));
+            }
+        }, 5000);
+    }
 }

@@ -9,12 +9,14 @@
 						</lightning-progress-step>
 					</template>
 					<template if:true={showCurrentStep}>
-						<lightning-button variant="brand" label="Mark As Current Step" title="Mark As Current Step"
-							onclick={handleUpdate} class="button-margin"></lightning-button>
+						<button class="slds-button slds-button_brand test" onclick={handleUpdate} style="white-space: nowrap;">Mark As Current Step</button>
+						<!-- <lightning-button variant="brand" label="Mark As Current Step" title="Mark As Current Step"
+							onclick={handleUpdate} class="button-margin"></lightning-button> -->
 					</template>
 					<template if:true={showCompleteStep}>
-						<lightning-button variant="brand" label="Mark Step as Complete" title="Mark Step as Complete"
-							onclick={handleUpdateComplete} class="button-margin"></lightning-button>
+						<button class="slds-button slds-button_brand test" onclick={handleUpdateComplete} style="white-space: nowrap;">Mark Step as Complete</button>
+						<!-- <lightning-button variant="brand" label="Mark Step as Complete" title="Mark Step as Complete"
+							onclick={handleUpdateComplete} class="button-margin1"></lightning-button> -->
 					</template>
 				</lightning-progress-indicator>
 			</div>
