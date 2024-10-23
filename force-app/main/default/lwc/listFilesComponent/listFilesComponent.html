@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Manage Files" icon-name="standard:file">
+        <!-- File Upload Component -->
+        <lightning-file-upload
+            label="Upload Files"
+            record-id={recordId}
+            multiple
+            accepted-formats={acceptedFormats}
+            onuploadfinished={handleUploadFinished}>
+        </lightning-file-upload>
+
+        <!-- Display list of attached files in a grid format -->
+        <template if:true={files.length}>
+            <div class="slds-grid slds-wrap slds-gutters" style="gap: 10px;">
+                <template for:each={files} for:item="file">
+                    <div key={file.id} class="slds-col slds-size_1-of-2" style="padding: 5px;">
+                        <div class="slds-box slds-box_x-small" style="border: 1px solid #ddd; border-radius: 5px; display: flex; align-items: center; justify-content: space-between; background-color: #f4f6f9;">
+                            <lightning-icon
+                                icon-name={file.iconName}
+                                alternative-text={file.title}
+                                size="small"
+                                style="margin-right: 10px;">
+                            </lightning-icon>
+                            <!-- Use correct preview URL directly in href attribute -->
+                            <a href={file.previewUrl} target="_blank" style="flex-grow: 1; text-decoration: underline; color: #0070d2;">
+                                {file.title}
+                            </a>
+                            <lightning-button-icon
+                                icon-name="utility:close"
+                                alternative-text="Delete"
+                                onclick={handleDeleteFile}
+                                data-id={file.id}
+                                class="slds-float_right"
+                                style="margin-left: 10px;">
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- No Files Message -->
+        <template if:true={noFiles}>
+            <p>No files are attached to this record.</p>
+        </template>
+    </lightning-card>
+</template>
